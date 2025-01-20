@@ -1,0 +1,48 @@
+﻿.navbar {
+    background-color:#13697d;
+
+}
+
+.nav-item
+{
+    padding-left:30px !important;
+}
+
+#active {
+    color: yellow !important;
+}
+
+.navbar a:link .navbar a:visited{
+
+    color:white !important;
+}
+
+.navbar a:hover{
+
+    color:#0dedd1 !important;
+   
+}
+
+.dropdown-menu a:hover
+{
+    color:black !important;
+}
+
+.hidden{
+    display:none;
+}
+
+.jumbotron {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #e9ecef;
+    border-radius: .3rem;
+}
+.table {
+    border: 2px solid;
+   
+}
+
+.td {
+    text-align: left;
+}

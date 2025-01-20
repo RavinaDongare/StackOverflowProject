@@ -1,0 +1,88 @@
+﻿@model StackOverflowProject.ViewModels.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+
+
+<section class="vh-100">
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                     class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+              
+                <form class="needs-validation" novalidate="novalidate" action="/account/login" method="post">
+                    @Html.AntiForgeryToken()
+
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label fw-bold" for="txtEmail">Email Address</label>
+                        <input type="email" id="txtEmail" class="form-control form-control-lg" name="Email" value="@Model.Email" required="required" placeholder="Enter a valid email address" />
+
+                        <div class="valid-feedback"> Looks Good !</div>
+                        <div class="invalid-feedback"> Invalid Email address</div>
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-3">
+                        <label class="form-label fw-bold" for="txtPassword">Password</label>
+                        <input type="password" id="txtPassword" class="form-control form-control-lg" value="@Model.Password" placeholder="Enter password" name="Password" required="required" minlength="6" />
+
+                        <div class="valid-feedback"> Looks Good !</div>
+                        <div class="invalid-feedback">  Password must contain at least 6 characters.</div>
+
+                    </div>
+
+                    
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <button type="submit" class="btn btn-primary"
+                                style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                            Login
+                        </button >
+
+                        <div class="text-danger">
+                            @Html.ValidationSummary()
+                        </div>
+                       
+                        <p class="small fw-bold mt-2 pt-1 mb-0">
+                            Don't have an account? <a href="/account/register"
+                                                      class="link-danger">Register</a>
+                        </p>
+                    </div>
+
+                </form>
+</div>
+        </div>
+    </div>
+
+</section>
+
+<script>
+    $("a[href = '/account/login']").attr("id", "active");
+    $(document).on("submit", ".needs-validation", validate);
+
+    $(".needs-validation input").blur(validate);
+
+    function validate(event)
+    {
+
+        if ($(".needs-validation")[0].checkValidity() == false)
+        {
+
+            event.preventDefault();
+
+        }
+
+        $(".needs-validation")[0].classList.add("was-validated");
+
+    }
+    function escapeRegExp(str) {
+
+        return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+
+    }
+</script>

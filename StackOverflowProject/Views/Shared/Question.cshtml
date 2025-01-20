@@ -1,0 +1,35 @@
+﻿@model StackOverflowProject.ViewModels.QuestionViewModel
+
+        <tr>
+            <td> <span class="badge bg-secondary"> @Model.ViewsCount Views</span>    </td>
+
+            <td><span class="badge bg-secondary"> @Model.AnswersCount Ans </span>   </td>
+            <td><span class="badge bg-secondary"> @Model.VotesCount Votes </span></td>
+            <td class="text-dark">
+                <a href="/questions/view/@Model.QuestionId" class="text-primary">@Model.QuestionName</a>
+                <br />
+                <span class="badge bg-info"> @Model.Category.CategoryName</span>
+
+            </td>
+            <td>
+                @if (Convert.ToInt32(Session["CurrentUserID"]) != Model.UserID)
+                {
+                    @:by @Model.User.Name
+                }
+                else
+                {
+                    @:by you
+                }
+
+
+
+            </td>
+            <td>on @Model.QuestionDateAndTime   </td>
+
+
+        </tr>
+   
+
+
+
+
