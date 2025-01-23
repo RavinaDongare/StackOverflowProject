@@ -3,64 +3,137 @@
     ViewBag.Title = "Change Profile";
 }
 
+
 <div class="row">
     <div class="cl-sm-12">
-        <h1>  Registration</h1>
-        <form class="needs-validation" novalidate="novalidate" action="/account/ChangeProfile" method="post">
+        <form class="needs-validation col d-flex justify-content-center" novalidate="novalidate" action="/account/ChangeProfile" method="post" style="position: center; padding-left: 50px;padding-right:50px">
             @Html.AntiForgeryToken()
-            <div class="form-row">
-                <div class="form-group col-sm-12">
-                    <label for="txtName" class="form-label">User Name</label>
-                    <input type="text" class="form-control" id="txtName" value="@Model.Name" placeholder="Enter User Name" name="Name" required="required" pattern="^[a-zA-Z ]*$" autofocus="autofocus" />
-                    <div class="valid-feedback"> Looks Good !</div>
-                    <div class="invalid-feedback">   Please enter name [alphabets only].</div>
+            <div class="card text-center justify-content-sm-center" style="width: 500px">
+                <div class="card-header h5 text-white bg-primary">Change Profile</div>
+                <div class="card-body px-5">
+                    <div class="form-group col-sm-8">
+                        <label class="form-label">Email:  </label>
+                        @Html.HiddenFor(temp => temp.Email)
+                        <span>@Model.Email</span>
+                    </div>
+                    <div class="form-outline">
+                        <label class="form-label" for="txtName">User Name </label>
+                        @*<input type="email" id="txtEmail" value="@Model.Email" readonly="readonly" class="form-control my-3" />*@
+                        <input type="text" class="form-control" id="txtName" value="@Model.Name" placeholder="Enter User Name" name="Name" required="required" pattern="^[a-zA-Z ]*$" autofocus="autofocus" />
+                        <div class="valid-feedback"> Looks Good !</div>
+                        <div class="invalid-feedback">   Please enter name [alphabets only].</div>
+                    </div>
+                    <div class="form-outline">
+                        <div class="form-group   my-3">
+                            <label for="txtMobile" class="form-label">Mobile</label>
+                            <input type="text" class="form-control" id="txtMobile" value="@Model.Mobile" placeholder="Enter Mobile No" name="Mobile" required="required" />
+                            <div class="valid-feedback"> Looks Good !</div>
+                            <div class="invalid-feedback"> Invalid Mobile Number</div>
+                            @*<input type="password" class="form-control" id="txtPassword" placeholder="Enter Password" name="Password" required="required" minlength="6" oninput="form.ConfirmPassword.pattern = escapeRegExp(this.value)" />
+                <div class="valid-feedback"> Looks Good !</div>
+                <div class="invalid-feedback">  Password must contain at least 6 characters.</div>*@
+                        </div>
+
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Change Profile</button>
+                    </div>
+
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-sm-6">
-                    <label class="form-label">Email</label>
-                       @Html.HiddenFor(temp => temp.Email)
-                    <span>@Model.Email</span>
-                </div>
-
-
-                <div class="form-group col-sm-6">
-                    <label for="txtMobile" class="form-label">Mobile</label>
-                    <input type="text" class="form-control" id="txtMobile" value="@Model.Mobile" placeholder="Enter Mobile No" name="Mobile" required="required" />
-                    <div class="valid-feedback"> Looks Good !</div>
-                    <div class="invalid-feedback"> Invalid Mobile Number</div>
-                </div>
-            </div>
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary">Change Profile</button>
-            </div>
-
         </form>
     </div>
 </div>
 
-<script>
-    $(document).on("submit", ".needs-validation", validate);
 
-    $(".needs-validation input").blur(validate);
 
-    function validate(event) {
 
-        if ($(".needs-validation")[0].checkValidity() == false ) {
 
-            event.preventDefault();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<section class="vh-100">
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="row">
+                <div class="cl-sm-12">
+                    
+                    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                        <form class="needs-validation" novalidate="novalidate" action="/account/ChangeProfile" method="post">
+                            @Html.AntiForgeryToken()
+                            <div class="form-row">
+                                <div class="form-group col-sm-12">
+                                    <label for="txtName" class="form-label">User Name</label>
+                                    <input type="text" class="form-control" id="txtName" value="@Model.Name" placeholder="Enter User Name" name="Name" required="required" pattern="^[a-zA-Z ]*$" autofocus="autofocus" />
+                                    <div class="valid-feedback"> Looks Good !</div>
+                                    <div class="invalid-feedback">   Please enter name [alphabets only].</div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label">Email</label>
+                                    @Html.HiddenFor(temp => temp.Email)
+                                    <span>@Model.Email</span>
+                                </div>
+
+
+                                <div class="form-group col-sm-6">
+                                    <label for="txtMobile" class="form-label">Mobile</label>
+                                    <input type="text" class="form-control" id="txtMobile" value="@Model.Mobile" placeholder="Enter Mobile No" name="Mobile" required="required" />
+                                    <div class="valid-feedback"> Looks Good !</div>
+                                    <div class="invalid-feedback"> Invalid Mobile Number</div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Change Profile</button>
+                            </div>
+
+                        </form>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </div>
+</section>*@
+    <script>
+        $(document).on("submit", ".needs-validation", validate);
+
+        $(".needs-validation input").blur(validate);
+
+        function validate(event) {
+
+            if ($(".needs-validation")[0].checkValidity() == false) {
+
+                event.preventDefault();
+
+            }
+
+            $(".needs-validation")[0].classList.add("was-validated");
 
         }
 
-        $(".needs-validation")[0].classList.add("was-validated");
 
-    }
-   
-
-    $("a[href = '/account/ChangeProfile']").attr("id", "active");
+        $("a[href = '/account/ChangeProfile']").attr("id", "active");
 
 
-  
 
 
-</script>
+
+    </script>
